@@ -7,7 +7,15 @@ defmodule CuddlyParty.Umbrella.MixProject do
       version: "0.1.0",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
-      aliases: aliases()
+      aliases: aliases(),
+      releases: [
+        cuddly_fiesta: [
+          applications: [
+            cuddly_party: :permanent,
+            cuddly_party_web: :permanent
+          ]
+        ]
+      ]
     ]
   end
 

@@ -22,4 +22,7 @@ erl_crash.dump
 # Temporary files, for example, from tests.
 /tmp/
 
+# DotEnvy stuff. I don't use it yet but maybe I will
+/env/
+
 
