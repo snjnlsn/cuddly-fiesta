@@ -10,8 +10,8 @@ defmodule CuddlyParty.Blog.Post do
     timestamps()
   end
 
-  def changeset(params \\ %{}) do
-    %__MODULE__{}
+  def changeset(post, params \\ %{}) do
+    post
     |> cast(params, [:title, :body, :published])
   end
 end

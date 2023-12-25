@@ -6,7 +6,7 @@ defmodule CuddlyPartyWeb.BlogController do
     # The home page is often custom made,∫
     # so skip the default app layout.
     conn
-    |> assign(:posts, Blog.get_posts())
+    |> assign(:posts, Blog.get_published_posts())
     |> render(:index)
   end
 end
