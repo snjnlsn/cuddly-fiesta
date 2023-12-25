@@ -17,7 +17,8 @@ defmodule CuddlyPartyWeb.Router do
   scope "/", CuddlyPartyWeb do
     pipe_through :browser
 
-    get "/", PageController, :home
+    # get "/", PageController, :home
+    get "/", BlogController, :index
   end
 
   # Other scopes may use custom stacks.
