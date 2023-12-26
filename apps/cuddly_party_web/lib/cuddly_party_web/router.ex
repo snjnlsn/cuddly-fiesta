@@ -18,12 +18,12 @@ defmodule CuddlyPartyWeb.Router do
     pipe_through :browser
 
     # get "/", PageController, :home
-    live "/", FlostLive.Index, :index
-    live "/flosts/new", FlostLive.Index, :new
-    live "/flosts/:id/edit", FlostLive.Index, :edit
+    live "/", PostLive.Index, :index
+    live "/posts/new", PostLive.Index, :new
+    live "/posts/:id/edit", PostLive.Index, :edit
 
-    live "/flosts/:id", FlostLive.Show, :show
-    live "/flosts/:id/show/edit", FlostLive.Show, :edit
+    live "/posts/:id", PostLive.Show, :show
+    live "/posts/:id/show/edit", PostLive.Show, :edit
   end
 
   # Other scopes may use custom stacks.
