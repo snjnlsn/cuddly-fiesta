@@ -31,13 +31,13 @@
   </:action>
 </.table>
 
-<.modal :if={@live_action in [:new, :edit]} id="post-modal" show on_cancel={JS.patch(~p"/posts")}>
+<.modal :if={@live_action in [:new, :edit]} id="post-modal" show on_cancel={JS.patch(~p"/")}>
   <.live_component
     module={CuddlyPartyWeb.PostLive.FormComponent}
     id={@post.id || :new}
     title={@page_title}
     action={@live_action}
     post={@post}
-    patch={~p"/posts"}
+    patch={~p"/"}
   />
 </.modal>
