@@ -85,6 +85,7 @@ defmodule CuddlyPartyWeb do
       import Phoenix.HTML
       # Core UI components and translation
       import CuddlyPartyWeb.CoreComponents
+      import CuddlyPartyWeb.Helpers
       import CuddlyPartyWeb.Gettext
 
       # Shortcut for generating JS commands

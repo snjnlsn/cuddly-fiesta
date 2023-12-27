@@ -15,8 +15,10 @@ defmodule CuddlyPartyWeb.CoreComponents do
   Icons are provided by [heroicons](https://heroicons.com). See `icon/1` for usage.
   """
   use Phoenix.Component
+  use CuddlyPartyWeb, :verified_routes
 
   alias Phoenix.LiveView.JS
+  alias CuddlyPartyWeb.Helpers
   import CuddlyPartyWeb.Gettext
 
   @doc """
@@ -594,6 +596,32 @@ defmodule CuddlyPartyWeb.CoreComponents do
   def icon(%{name: "hero-" <> _} = assigns) do
     ~H"""
     <span class={[@name, @class]} />
+    """
+  end
+
+  @doc """
+    Blog Post Component
+
+  ## Examples
+      <.blog_post post={%Post{}}></.blog_post>
+  """
+  attr :id, :string
+
+  def blog_post(%{post: post} = assigns) do
+    ~H"""
+    <div class="px-4 py-10 sm:px-6 sm:py-28 lg:px-8 xl:px-28 xl:py-32">
+      <div class="mx-auto max-w-xl lg:mx-0">
+        <h1 class="text-brand mt-10 flex items-center text-sm font-semibold leading-6">
+          <%= post.inserted_at |> Helpers.format_datetime() %>
+        </h1>
+        <p class="text-[2rem] mt-4 font-semibold leading-10 tracking-tighter text-zinc-900">
+          <.link href={~p(/posts/#{post})}><%= post.title %></.link>
+        </p>
+        <p class="mt-4 text-base leading-7 text-zinc-600">
+          <%= post.body %>
+        </p>
+      </div>
+    </div>
     """
   end
 
