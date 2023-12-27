@@ -1,0 +1,23 @@
+<.header>
+  Listing Posts
+  <:actions>
+    <.link patch={~p"/posts/new"}>
+      <.button>New Post</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<div :for={{_id, post} <- @streams.posts}>
+  <.blog_post post={post} />
+</div>
+
+<.modal :if={@live_action in [:new, :edit]} id="post-modal" show on_cancel={JS.patch(~p"/")}>
+  <.live_component
+    module={Website.PostLive.FormComponent}
+    id={@post.id || :new}
+    title={@page_title}
+    action={@live_action}
+    post={@post}
+    patch={~p"/"}
+  />
+</.modal>

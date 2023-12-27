@@ -1,1 +1,1 @@
-call "%~dp0\cuddly_fiesta" eval CuddlyPartyWeb.Release.migrate
+call "%~dp0\cuddly_fiesta" eval Website.Release.migrate

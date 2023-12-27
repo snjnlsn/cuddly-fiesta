@@ -10,8 +10,8 @@
 import Config
 
 # Configure Mix tasks and generators
-config :cuddly_party,
-  ecto_repos: [CuddlyParty.Repo]
+config :blog,
+  ecto_repos: [Blog.Repo]
 
 # Configures the mailer
 #
@@ -20,21 +20,21 @@ config :cuddly_party,
 #
 # For production it's recommended to configure a different adapter
 # at the `config/runtime.exs`.
-config :cuddly_party, CuddlyParty.Mailer, adapter: Swoosh.Adapters.Local
+config :blog, Blog.Mailer, adapter: Swoosh.Adapters.Local
 
-config :cuddly_party_web,
-  ecto_repos: [CuddlyParty.Repo],
-  generators: [context_app: :cuddly_party]
+config :website,
+  ecto_repos: [Blog.Repo],
+  generators: [context_app: :blog]
 
 # Configures the endpoint
-config :cuddly_party_web, CuddlyPartyWeb.Endpoint,
+config :website, Website.Endpoint,
   url: [host: "localhost"],
   adapter: Phoenix.Endpoint.Cowboy2Adapter,
   render_errors: [
-    formats: [html: CuddlyPartyWeb.ErrorHTML, json: CuddlyPartyWeb.ErrorJSON],
+    formats: [html: Website.ErrorHTML, json: Website.ErrorJSON],
     layout: false
   ],
-  pubsub_server: CuddlyParty.PubSub,
+  pubsub_server: Blog.PubSub,
   live_view: [signing_salt: "qhsH2p/I"]
 
 # Configure esbuild (the version is required)
@@ -43,7 +43,7 @@ config :esbuild,
   default: [
     args:
       ~w(js/app.js --bundle --target=es2017 --outdir=../priv/static/assets --external:/fonts/* --external:/images/*),
-    cd: Path.expand("../apps/cuddly_party_web/assets", __DIR__),
+    cd: Path.expand("../apps/website/assets", __DIR__),
     env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
   ]
 
@@ -56,7 +56,7 @@ config :tailwind,
       --input=css/app.css
       --output=../priv/static/assets/app.css
     ),
-    cd: Path.expand("../apps/cuddly_party_web/assets", __DIR__)
+    cd: Path.expand("../apps/website/assets", __DIR__)
   ]
 
 # Configures Elixir's Logger
