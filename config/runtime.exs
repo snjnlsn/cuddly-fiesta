@@ -36,7 +36,7 @@ if config_env() == :prod do
       You can generate one by calling: mix phx.gen.secret
       """
 
-  config :cuddly_party_web, CuddlyPartyWeb.Endpoint,
+  config :website, Website.Endpoint,
     http: [
       # Enable IPv6 and bind on all interfaces.
       # Set it to  {0, 0, 0, 0, 0, 0, 0, 1} for local network only access.
@@ -50,7 +50,7 @@ if config_env() == :prod do
   # If you are doing OTP releases, you need to instruct Phoenix
   # to start each relevant endpoint:
   #
-      config :cuddly_party_web, CuddlyPartyWeb.Endpoint, server: true
+  config :website, Website.Endpoint, server: true
   #
   # Then you can assemble a release by calling `mix release`.
   # See `mix help release` for more information.
@@ -60,7 +60,7 @@ if config_env() == :prod do
   # To get SSL working, you will need to add the `https` key
   # to your endpoint configuration:
   #
-  #     config :cuddly_party_web, CuddlyPartyWeb.Endpoint,
+  #     config :website, Website.Endpoint,
   #       https: [
   #         ...,
   #         port: 443,
@@ -82,7 +82,7 @@ if config_env() == :prod do
   # We also recommend setting `force_ssl` in your endpoint, ensuring
   # no data is ever sent via http, always redirecting to https:
   #
-  #     config :cuddly_party_web, CuddlyPartyWeb.Endpoint,
+  #     config :website, Website.Endpoint,
   #       force_ssl: [hsts: true]
   #
   # Check `Plug.SSL` for all available options in `force_ssl`.

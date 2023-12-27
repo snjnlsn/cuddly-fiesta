@@ -15,7 +15,7 @@ config :cuddly_party, CuddlyParty.Repo,
 
 # We don't run a server during test. If one is required,
 # you can enable the server option below.
-config :cuddly_party_web, CuddlyPartyWeb.Endpoint,
+config :website, Website.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
   secret_key_base: "025kI+t1Av5w8TL68bfrcx/Z2bXPv/nwTRCQIvXx/um4HsJ2Ql2AHoW3Qu61CHSO",
   server: false

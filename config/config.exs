@@ -22,16 +22,16 @@ config :cuddly_party,
 # at the `config/runtime.exs`.
 config :cuddly_party, CuddlyParty.Mailer, adapter: Swoosh.Adapters.Local
 
-config :cuddly_party_web,
+config :website,
   ecto_repos: [CuddlyParty.Repo],
   generators: [context_app: :cuddly_party]
 
 # Configures the endpoint
-config :cuddly_party_web, CuddlyPartyWeb.Endpoint,
+config :website, Website.Endpoint,
   url: [host: "localhost"],
   adapter: Phoenix.Endpoint.Cowboy2Adapter,
   render_errors: [
-    formats: [html: CuddlyPartyWeb.ErrorHTML, json: CuddlyPartyWeb.ErrorJSON],
+    formats: [html: Website.ErrorHTML, json: Website.ErrorJSON],
     layout: false
   ],
   pubsub_server: CuddlyParty.PubSub,
@@ -43,7 +43,7 @@ config :esbuild,
   default: [
     args:
       ~w(js/app.js --bundle --target=es2017 --outdir=../priv/static/assets --external:/fonts/* --external:/images/*),
-    cd: Path.expand("../apps/cuddly_party_web/assets", __DIR__),
+    cd: Path.expand("../apps/website/assets", __DIR__),
     env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
   ]
 
@@ -56,7 +56,7 @@ config :tailwind,
       --input=css/app.css
       --output=../priv/static/assets/app.css
     ),
-    cd: Path.expand("../apps/cuddly_party_web/assets", __DIR__)
+    cd: Path.expand("../apps/website/assets", __DIR__)
   ]
 
 # Configures Elixir's Logger

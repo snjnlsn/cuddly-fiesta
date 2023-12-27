@@ -12,7 +12,7 @@ defmodule CuddlyParty.Umbrella.MixProject do
         cuddly_fiesta: [
           applications: [
             cuddly_party: :permanent,
-            cuddly_party_web: :permanent
+            website: :permanent
           ]
         ]
       ]
