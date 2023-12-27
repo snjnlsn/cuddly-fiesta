@@ -10,7 +10,7 @@ config :website, Website.Endpoint,
   cache_static_manifest: "priv/static/cache_manifest.json"
 
 # Configures Swoosh API Client
-config :swoosh, :api_client, CuddlyParty.Finch
+config :swoosh, :api_client, Blog.Finch
 
 # Disable Swoosh Local Memory Storage
 config :swoosh, local: false

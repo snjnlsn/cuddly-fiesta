@@ -16,7 +16,7 @@ if config_env() == :prod do
 
   maybe_ipv6 = if System.get_env("ECTO_IPV6") in ~w(true 1), do: [:inet6], else: []
 
-  config :cuddly_party, CuddlyParty.Repo,
+  config :blog, Blog.Repo,
     # ssl: true,
     url: database_url,
     pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10"),
@@ -93,7 +93,7 @@ if config_env() == :prod do
   # Also, you may need to configure the Swoosh API client of your choice if you
   # are not using SMTP. Here is an example of the configuration:
   #
-  #     config :cuddly_party, CuddlyParty.Mailer,
+  #     config :blog, Blog.Mailer,
   #       adapter: Swoosh.Adapters.Mailgun,
   #       api_key: System.get_env("MAILGUN_API_KEY"),
   #       domain: System.get_env("MAILGUN_DOMAIN")
@@ -105,5 +105,5 @@ if config_env() == :prod do
   #
   # See https://hexdocs.pm/swoosh/Swoosh.html#module-installation for details.
 
-  config :cuddly_party, :dns_cluster_query, System.get_env("DNS_CLUSTER_QUERY")
+  config :blog, :dns_cluster_query, System.get_env("DNS_CLUSTER_QUERY")
 end

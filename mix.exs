@@ -11,7 +11,7 @@ defmodule CuddlyParty.Umbrella.MixProject do
       releases: [
         cuddly_fiesta: [
           applications: [
-            cuddly_party: :permanent,
+            blog: :permanent,
             website: :permanent
           ]
         ]
@@ -51,7 +51,7 @@ defmodule CuddlyParty.Umbrella.MixProject do
     [
       # run `mix setup` in all child apps
       setup: ["cmd mix setup"],
-      "ecto.setup": ["ecto.create", "ecto.migrate", "run apps/cuddly_party/priv/repo/seeds.exs"],
+      "ecto.setup": ["ecto.create", "ecto.migrate", "run apps/blog/priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"]
     ]
   end

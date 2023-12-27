@@ -10,8 +10,8 @@
 import Config
 
 # Configure Mix tasks and generators
-config :cuddly_party,
-  ecto_repos: [CuddlyParty.Repo]
+config :blog,
+  ecto_repos: [Blog.Repo]
 
 # Configures the mailer
 #
@@ -20,11 +20,11 @@ config :cuddly_party,
 #
 # For production it's recommended to configure a different adapter
 # at the `config/runtime.exs`.
-config :cuddly_party, CuddlyParty.Mailer, adapter: Swoosh.Adapters.Local
+config :blog, Blog.Mailer, adapter: Swoosh.Adapters.Local
 
 config :website,
-  ecto_repos: [CuddlyParty.Repo],
-  generators: [context_app: :cuddly_party]
+  ecto_repos: [Blog.Repo],
+  generators: [context_app: :blog]
 
 # Configures the endpoint
 config :website, Website.Endpoint,
@@ -34,7 +34,7 @@ config :website, Website.Endpoint,
     formats: [html: Website.ErrorHTML, json: Website.ErrorJSON],
     layout: false
   ],
-  pubsub_server: CuddlyParty.PubSub,
+  pubsub_server: Blog.PubSub,
   live_view: [signing_salt: "qhsH2p/I"]
 
 # Configure esbuild (the version is required)

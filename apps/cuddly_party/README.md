@@ -1,3 +1,0 @@
-# CuddlyParty
-
-**TODO: Add description**

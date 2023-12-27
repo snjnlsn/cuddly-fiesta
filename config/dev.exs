@@ -1,11 +1,11 @@
 import Config
 
 # Configure your database
-config :cuddly_party, CuddlyParty.Repo,
+config :blog, Blog.Repo,
   username: "postgres",
   password: "postgres",
   hostname: "localhost",
-  database: "cuddly_party_dev",
+  database: "blog_dev",
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10

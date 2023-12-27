@@ -36,7 +36,7 @@ ENV MIX_ENV="prod"
 
 # install mix dependencies
 COPY mix.exs mix.lock ./
-COPY apps/cuddly_party/mix.exs ./apps/cuddly_party/mix.exs
+COPY apps/blog/mix.exs ./apps/blog/mix.exs
 COPY apps/website/mix.exs ./apps/website/mix.exs
 RUN mix deps.get --only $MIX_ENV
 RUN mkdir config
@@ -47,10 +47,10 @@ RUN mkdir config
 COPY config/config.exs config/${MIX_ENV}.exs config/
 RUN mix deps.compile
 
-COPY apps/cuddly_party/priv apps/cuddly_party/priv
+COPY apps/blog/priv apps/blog/priv
 COPY apps/website/priv apps/website/priv
 
-COPY apps/cuddly_party/lib apps/cuddly_party/lib
+COPY apps/blog/lib apps/blog/lib
 COPY apps/website/lib apps/website/lib
 
 COPY apps/website/assets apps/website/assets
