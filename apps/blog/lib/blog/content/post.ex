@@ -1,4 +1,4 @@
-defmodule CuddlyParty.Blog.Post do
+defmodule Blog.Content.Post do
   use Ecto.Schema
   import Ecto.Changeset
 

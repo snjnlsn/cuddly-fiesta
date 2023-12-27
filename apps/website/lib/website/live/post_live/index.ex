@@ -1,12 +1,12 @@
 defmodule Website.PostLive.Index do
   use Website, :live_view
 
-  alias CuddlyParty.Blog
-  alias CuddlyParty.Blog.Post
+  alias Blog.Content
+  alias Blog.Content.Post
 
   @impl true
   def mount(_params, _session, socket) do
-    {:ok, stream(socket, :posts, Blog.list_posts())}
+    {:ok, stream(socket, :posts, Content.list_posts())}
   end
 
   @impl true
@@ -17,7 +17,7 @@ defmodule Website.PostLive.Index do
   defp apply_action(socket, :edit, %{"id" => id}) do
     socket
     |> assign(:page_title, "Edit Post")
-    |> assign(:post, Blog.get_post!(id))
+    |> assign(:post, Content.get_post!(id))
   end
 
   defp apply_action(socket, :new, _params) do
@@ -39,8 +39,8 @@ defmodule Website.PostLive.Index do
 
   @impl true
   def handle_event("delete", %{"id" => id}, socket) do
-    post = Blog.get_post!(id)
-    {:ok, _} = Blog.delete_post(post)
+    post = Content.get_post!(id)
+    {:ok, _} = Content.delete_post(post)
 
     {:noreply, stream_delete(socket, :posts, post)}
   end

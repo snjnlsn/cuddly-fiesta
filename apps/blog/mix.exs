@@ -1,4 +1,4 @@
-defmodule CuddlyParty.MixProject do
+defmodule Blog.MixProject do
   use Mix.Project
 
   def project do
@@ -22,7 +22,7 @@ defmodule CuddlyParty.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {CuddlyParty.Application, []},
+      mod: {Blog.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end

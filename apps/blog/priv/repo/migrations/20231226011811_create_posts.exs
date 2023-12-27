@@ -1,4 +1,4 @@
-defmodule CuddlyParty.Repo.Migrations.CreatePosts do
+defmodule Blog.Repo.Migrations.CreatePosts do
   use Ecto.Migration
 
   def change do

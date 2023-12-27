@@ -605,20 +605,20 @@ defmodule Website.CoreComponents do
   ## Examples
       <.blog_post post={%Post{}}></.blog_post>
   """
-  attr :id, :string
+  attr :post, :any, required: true
 
-  def blog_post(%{post: post} = assigns) do
+  def blog_post(%{post: _post} = assigns) do
     ~H"""
     <div class="px-4 py-10 sm:px-6 sm:py-28 lg:px-8 xl:px-28 xl:py-32">
       <div class="mx-auto max-w-xl lg:mx-0">
         <h1 class="text-brand mt-10 flex items-center text-sm font-semibold leading-6">
-          <%= post.inserted_at |> Helpers.format_datetime() %>
+          <%= @post.inserted_at |> Helpers.format_datetime() %>
         </h1>
         <p class="text-[2rem] mt-4 font-semibold leading-10 tracking-tighter text-zinc-900">
-          <.link href={~p(/posts/#{post})}><%= post.title %></.link>
+          <.link href={~p(/posts/#{@post})}><%= @post.title %></.link>
         </p>
         <p class="mt-4 text-base leading-7 text-zinc-600">
-          <%= post.body %>
+          <%= @post.body %>
         </p>
       </div>
     </div>

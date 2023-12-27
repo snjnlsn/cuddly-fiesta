@@ -7,8 +7,8 @@
   </:actions>
 </.header>
 
-<div :for={{id, post} <- @streams.posts}>
-  <.blog_post post={post}></.blog_post>
+<div :for={{_id, post} <- @streams.posts}>
+  <.blog_post post={post} />
 </div>
 
 <.modal :if={@live_action in [:new, :edit]} id="post-modal" show on_cancel={JS.patch(~p"/")}>

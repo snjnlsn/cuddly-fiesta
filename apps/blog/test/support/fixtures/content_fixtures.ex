@@ -1,7 +1,7 @@
-defmodule CuddlyParty.BlogFixtures do
+defmodule Blog.ContentFixtures do
   @moduledoc """
   This module defines test helpers for creating
-  entities via the `CuddlyParty.Blog` context.
+  entities via the `Blog.Blog` context.
   """
 
   @doc """
@@ -15,7 +15,7 @@ defmodule CuddlyParty.BlogFixtures do
         published: true,
         title: "some title"
       })
-      |> CuddlyParty.Blog.create_post()
+      |> Blog.Content.create_post()
 
     post
   end

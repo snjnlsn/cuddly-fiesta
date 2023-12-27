@@ -1,7 +1,7 @@
 defmodule Website.PostLive.FormComponent do
   use Website, :live_component
 
-  alias CuddlyParty.Blog
+  alias Blog.Content
 
   @impl true
   def render(assigns) do
@@ -32,7 +32,7 @@ defmodule Website.PostLive.FormComponent do
 
   @impl true
   def update(%{post: post} = assigns, socket) do
-    changeset = Blog.change_post(post)
+    changeset = Content.change_post(post)
 
     {:ok,
      socket
@@ -44,7 +44,7 @@ defmodule Website.PostLive.FormComponent do
   def handle_event("validate", %{"post" => post_params}, socket) do
     changeset =
       socket.assigns.post
-      |> Blog.change_post(post_params)
+      |> Content.change_post(post_params)
       |> Map.put(:action, :validate)
 
     {:noreply, assign_form(socket, changeset)}
@@ -55,7 +55,7 @@ defmodule Website.PostLive.FormComponent do
   end
 
   defp save_post(socket, :edit, post_params) do
-    case Blog.update_post(socket.assigns.post, post_params) do
+    case Content.update_post(socket.assigns.post, post_params) do
       {:ok, post} ->
         notify_parent({:saved, post})
 
@@ -70,7 +70,7 @@ defmodule Website.PostLive.FormComponent do
   end
 
   defp save_post(socket, :new, post_params) do
-    case Blog.create_post(post_params) do
+    case Content.create_post(post_params) do
       {:ok, post} ->
         notify_parent({:saved, post})
 

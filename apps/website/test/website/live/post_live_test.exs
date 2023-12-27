@@ -2,7 +2,7 @@ defmodule Website.PostLiveTest do
   use Website.ConnCase
 
   import Phoenix.LiveViewTest
-  import CuddlyParty.BlogFixtures
+  import Blog.ContentFixtures
 
   @create_attrs %{title: "some title", body: "some body", published: true}
   @update_attrs %{title: "some updated title", body: "some updated body", published: false}

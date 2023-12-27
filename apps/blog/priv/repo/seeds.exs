@@ -1,5 +1,5 @@
-alias CuddlyParty.Repo
-alias CuddlyParty.Blog.Post
+alias Blog.Repo
+alias Blog.Content.Post
 
 # Script for populating the database. You can run it as:
 #
@@ -8,7 +8,7 @@ alias CuddlyParty.Blog.Post
 # Inside the script, you can read and write to any of your
 # repositories directly:
 #
-#     CuddlyParty.Repo.insert!(%CuddlyParty.SomeSchema{})
+#     Blog.Repo.insert!(%Blog.SomeSchema{})
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.

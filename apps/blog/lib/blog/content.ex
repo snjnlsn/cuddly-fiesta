@@ -1,12 +1,12 @@
-defmodule CuddlyParty.Blog do
+defmodule Blog.Content do
   @moduledoc """
-  The Blog context.
+  The Content context.
   """
 
   import Ecto.Query, warn: false
-  alias CuddlyParty.Repo
+  alias Blog.Repo
 
-  alias CuddlyParty.Blog.Post
+  alias Blog.Content.Post
 
   @doc """
   Returns the list of posts.

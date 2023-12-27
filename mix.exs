@@ -1,4 +1,4 @@
-defmodule CuddlyParty.Umbrella.MixProject do
+defmodule Blog.Umbrella.MixProject do
   use Mix.Project
 
   def project do

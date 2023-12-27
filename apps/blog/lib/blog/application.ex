@@ -1,4 +1,4 @@
-defmodule CuddlyParty.Application do
+defmodule Blog.Application do
   # See https://hexdocs.pm/elixir/Application.html
   # for more information on OTP Applications
   @moduledoc false
@@ -8,15 +8,15 @@ defmodule CuddlyParty.Application do
   @impl true
   def start(_type, _args) do
     children = [
-      CuddlyParty.Repo,
+      Blog.Repo,
       {DNSCluster, query: Application.get_env(:blog, :dns_cluster_query) || :ignore},
-      {Phoenix.PubSub, name: CuddlyParty.PubSub},
+      {Phoenix.PubSub, name: Blog.PubSub},
       # Start the Finch HTTP client for sending emails
-      {Finch, name: CuddlyParty.Finch}
-      # Start a worker by calling: CuddlyParty.Worker.start_link(arg)
-      # {CuddlyParty.Worker, arg}
+      {Finch, name: Blog.Finch}
+      # Start a worker by calling: Blog.Worker.start_link(arg)
+      # {Blog.Worker, arg}
     ]
 
-    Supervisor.start_link(children, strategy: :one_for_one, name: CuddlyParty.Supervisor)
+    Supervisor.start_link(children, strategy: :one_for_one, name: Blog.Supervisor)
   end
 end

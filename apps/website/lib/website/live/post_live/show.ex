@@ -1,7 +1,7 @@
 defmodule Website.PostLive.Show do
   use Website, :live_view
 
-  alias CuddlyParty.Blog
+  alias Blog.Content
 
   @impl true
   def mount(_params, _session, socket) do
@@ -13,7 +13,7 @@ defmodule Website.PostLive.Show do
     {:noreply,
      socket
      |> assign(:page_title, page_title(socket.assigns.live_action))
-     |> assign(:post, Blog.get_post!(id))}
+     |> assign(:post, Content.get_post!(id))}
   end
 
   defp page_title(:show), do: "Show Post"
