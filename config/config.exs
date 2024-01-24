@@ -37,7 +37,7 @@ config :blog, Blog.Mailer, adapter: Swoosh.Adapters.Local
 
 config :website,
   ecto_repos: [Blog.Repo, Accounts.Repo],
-  generators: [context_app: :blog]
+  generators: [context_app: :accounts]
 
 # Configures the endpoint
 config :website, Website.Endpoint,
