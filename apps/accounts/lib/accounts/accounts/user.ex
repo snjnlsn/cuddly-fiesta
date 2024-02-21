@@ -4,6 +4,7 @@ defmodule Accounts.Accounts.User do
 
   schema "users" do
     field :email, :string
+    field :role, :string
     field :password, :string, virtual: true, redact: true
     field :hashed_password, :string, redact: true
     field :confirmed_at, :naive_datetime
@@ -36,7 +37,7 @@ defmodule Accounts.Accounts.User do
   """
   def registration_changeset(user, attrs, opts \\ []) do
     user
-    |> cast(attrs, [:email, :password])
+    |> cast(attrs, [:email, :password, :role])
     |> validate_email(opts)
     |> validate_password(opts)
   end
@@ -119,6 +120,15 @@ defmodule Accounts.Accounts.User do
     |> cast(attrs, [:password])
     |> validate_confirmation(:password, message: "does not match password")
     |> validate_password(opts)
+  end
+
+  @doc """
+  A user changeset for changing the role.
+  """
+  def role_changeset(user, attrs, _opts \\ []) do
+    user
+    |> cast(attrs, [:role])
+    |> validate_required([:role])
   end
 
   @doc """

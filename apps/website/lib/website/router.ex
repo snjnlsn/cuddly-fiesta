@@ -17,22 +17,32 @@ defmodule Website.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :redirect_unless_admin do
+    plug :require_authorized_user, role: "admin"
+  end
+
+  # Admin routes
   scope "/", Website do
-    pipe_through :browser
+    pipe_through [:browser, :redirect_unless_admin]
+
+    live "/posts/new", PostLive.Index, :new
+    live "/posts/:id/edit", PostLive.Index, :edit
+    live "/posts/:id/show/edit", PostLive.Show, :edit
+
+    live_session :redirect_unless_admin,
+      on_mount: [{Website.UserAuth, :redirect_unless_admin}] do
+      # may need to fix this - previously had :redirect_if_user_is_authenticated, but now i want to hide it behind admin logic not logged-out logic
+      live "/users/register", UserRegistrationLive, :new
+    end
+  end
+
+  scope "/", Website do
+    pipe_through [:browser]
 
     # get "/", PageController, :home
     live "/", PostLive.Index, :index
-    live "/posts/new", PostLive.Index, :new
-    live "/posts/:id/edit", PostLive.Index, :edit
-
     live "/posts/:id", PostLive.Show, :show
-    live "/posts/:id/show/edit", PostLive.Show, :edit
   end
-
-  # Other scopes may use custom stacks.
-  # scope "/api", Website do
-  #   pipe_through :api
-  # end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
   if Application.compile_env(:website, :dev_routes) do
@@ -52,7 +62,6 @@ defmodule Website.Router do
   end
 
   ## Authentication routes
-
   scope "/", Website do
     pipe_through [:browser, :redirect_if_user_is_authenticated]
 

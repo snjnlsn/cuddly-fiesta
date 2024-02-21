@@ -1,11 +1,9 @@
-# Script for populating the database. You can run it as:
-#
-#     mix run priv/repo/seeds.exs
-#
-# Inside the script, you can read and write to any of your
-# repositories directly:
-#
-#     Accounts.Repo.insert!(%Accounts.SomeSchema{})
-#
-# We recommend using the bang functions (`insert!`, `update!`
-# and so on) as they will fail if something goes wrong.
+alias Accounts.Accounts.User
+alias Accounts.Repo
+
+User.registration_changeset(%User{}, %{
+  email: "services@snjnlsn.co",
+  password: "bad_local_Passw0rd",
+  role: "admin"
+})
+|> Repo.insert!()

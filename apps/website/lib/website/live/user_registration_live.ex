@@ -2,7 +2,8 @@ defmodule Website.UserRegistrationLive do
   use Website, :live_view
 
   alias Accounts.Accounts
-  alias Accounts.Accounts.User
+  # this is Accounts.Accounts which is aliased above.. should prob fix naming
+  alias Accounts.User
 
   def render(assigns) do
     ~H"""

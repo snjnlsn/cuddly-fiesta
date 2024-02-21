@@ -211,6 +211,25 @@ defmodule Website.UserAuth do
     end
   end
 
+  @doc """
+  Used for routes that require the user to be authenticated.
+
+  If you want to enforce the user email is confirmed before
+  they use the application at all, here would be a good place.
+  """
+  def require_authorized_user(conn, opts) do
+    with user <- conn.assigns[:current_user],
+         user_role <- Map.get(user, :role),
+         true <- String.equivalent?(user_role, opts[:role]) do
+      conn
+    else
+      _ ->
+        conn
+        |> redirect(to: ~p"/")
+        |> halt()
+    end
+  end
+
   defp put_token_in_session(conn, token) do
     conn
     |> put_session(:user_token, token)
