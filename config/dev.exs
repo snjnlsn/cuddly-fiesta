@@ -1,6 +1,16 @@
 import Config
 
 # Configure your database
+config :accounts, Accounts.Repo,
+  username: "postgres",
+  password: "postgres",
+  hostname: "localhost",
+  database: "accounts_dev",
+  stacktrace: true,
+  show_sensitive_data_on_connection_error: true,
+  pool_size: 10
+
+# Configure your database
 config :blog, Blog.Repo,
   username: "postgres",
   password: "postgres",

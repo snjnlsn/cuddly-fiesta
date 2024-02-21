@@ -10,6 +10,19 @@
 import Config
 
 # Configure Mix tasks and generators
+config :accounts,
+  ecto_repos: [Accounts.Repo]
+
+# Configures the mailer
+#
+# By default it uses the "Local" adapter which stores the emails
+# locally. You can see the emails in your browser, at "/dev/mailbox".
+#
+# For production it's recommended to configure a different adapter
+# at the `config/runtime.exs`.
+config :accounts, Accounts.Mailer, adapter: Swoosh.Adapters.Local
+
+# Configure Mix tasks and generators
 config :blog,
   ecto_repos: [Blog.Repo]
 
@@ -23,7 +36,7 @@ config :blog,
 config :blog, Blog.Mailer, adapter: Swoosh.Adapters.Local
 
 config :website,
-  ecto_repos: [Blog.Repo],
+  ecto_repos: [Blog.Repo, Accounts.Repo],
   generators: [context_app: :blog]
 
 # Configures the endpoint

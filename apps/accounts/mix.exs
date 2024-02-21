@@ -1,9 +1,9 @@
-defmodule Blog.MixProject do
+defmodule Accounts.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :blog,
+      app: :accounts,
       version: "0.1.0",
       build_path: "../../_build",
       config_path: "../../config/config.exs",
@@ -22,7 +22,7 @@ defmodule Blog.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {Blog.Application, []},
+      mod: {Accounts.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end
@@ -36,11 +36,13 @@ defmodule Blog.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:bcrypt_elixir, "~> 3.0"},
       {:dns_cluster, "~> 0.1.1"},
       {:phoenix_pubsub, "~> 2.1"},
       {:ecto_sql, "~> 3.10"},
       {:postgrex, ">= 0.0.0"},
       {:jason, "~> 1.2"},
+      {:swoosh, "~> 1.3"},
       {:finch, "~> 0.13"}
     ]
   end
